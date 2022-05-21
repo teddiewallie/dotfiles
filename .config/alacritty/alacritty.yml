@@ -1,0 +1,45 @@
+alt_send_esc: false
+
+font:
+ size: 8
+ normal:
+   family: 'Iosevka Term Nerd Font'
+   style: 'Normal'
+
+window:
+  padding:
+    x: 10
+    y: 10
+
+  decorations: none
+
+colors:
+  primary:
+    background: '0x121212'
+    foreground: '0x81b5ac'
+
+  cursor:
+    text: '0x031a16'
+    cursor: '0x81b5ac'
+
+  normal:
+    black:    '0x031a16'
+    red:      '0x3e9688'
+    green:    '0x883e96'
+    yellow:   '0x3e4c96'
+    blue:     '0x96883e'
+    magenta:  '0x4c963e'
+    cyan:     '0x063e4c'
+    white:    '0x81b5ac'
+
+  bright:
+    black:    '0x2b685e'
+    red:      '0x3e7996'
+    green:    '0x0b342d'
+    yellow:   '0x184e45'
+    blue:     '0x5f9c92'
+    magenta:  '0xa7cec8'
+    cyan:     '0x3e965b'
+    white:    '0xd2e7e4'
+
+draw_bold_text_with_bright_colors: false
