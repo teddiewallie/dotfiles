@@ -1,0 +1,35 @@
+## FONT ##
+
+font-family                = MonaspiceAr Nerd Font
+font-size                  = 12
+adjust-cell-width          = 2
+adjust-cell-height         = 2
+bold-is-bright             = true
+
+## WINDOW ##
+
+window-decoration          = false
+gtk-titlebar               = false
+window-padding-x           = 20
+window-padding-y           = 20
+confirm-close-surface      = false
+
+## SHELL ##
+
+shell-integration          = detect
+shell-integration-features = no-cursor
+cursor-style               = block
+cursor-style-blink         = false
+
+## THEME ##
+
+theme                      = rose-pine
+palette                    = 2=#31748f
+palette                    = 10=#31748f
+palette                    = 4=#9ccfd8
+palette                    = 12=#9ccfd8
+selection-background       = #403d52
+
+## KEYBINDS ##
+
+keybind                    = ctrl+alt+l=reload_config
