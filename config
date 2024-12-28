@@ -1,9 +1,9 @@
 ## FONT ##
 
 font-family                = MonaspiceAr Nerd Font
-font-size                  = 12
-adjust-cell-width          = 2
-adjust-cell-height         = 2
+font-size                  = 14
+adjust-cell-width          = 3
+adjust-cell-height         = 4
 bold-is-bright             = true
 
 ## WINDOW ##
@@ -29,6 +29,11 @@ palette                    = 10=#31748f
 palette                    = 4=#9ccfd8
 palette                    = 12=#9ccfd8
 selection-background       = #403d52
+
+## SHADER ##
+
+# custom-shader              = /home/tewa/.config/ghostty/shader.glsl
+# custom-shader-animation    = true
 
 ## KEYBINDS ##
 
