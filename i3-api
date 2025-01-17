@@ -4,6 +4,7 @@ init () {
   setxkbmap se_prog -option caps:super
   feh --bg-scale ~/Pictures/bg.jpg
   xrandr --output DP-4 --mode 2560x1600 --rate 165.02
+  picom &
 }
 
 volume () {
