@@ -22,13 +22,13 @@ require("lazy").setup({
   spec = {
     { "nvim-tree/nvim-tree.lua" },
     { "folke/zen-mode.nvim" },
-    { "rose-pine/neovim", name = "rose-pine" },
+    { 'kepano/flexoki-neovim', name = 'flexoki' }
   },
   -- install = { colorscheme = { "habamax" } },
   checker = { enabled = true },
 })
 
-vim.cmd([[colorscheme rose-pine]])
+vim.cmd([[colorscheme flexoki]])
 
 require('nvim-tree').setup({
   view = {
