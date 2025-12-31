@@ -1,3 +1,3 @@
 # dotfiles
 
-My configs. One app per branch.
+My configs. One app per branch
