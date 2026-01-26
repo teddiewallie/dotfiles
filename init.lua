@@ -1,34 +1,9 @@
--- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({ { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-vim.opt.rtp:prepend(lazypath)
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
-require("lazy").setup({
-  spec = {
-    { "nvim-tree/nvim-tree.lua" },
-    { "folke/zen-mode.nvim" },
-    { "rose-pine/neovim", name = "rose-pine" },
-    { "dhruvasagar/vim-table-mode" },
-  },
-  -- install = { colorscheme = { "habamax" } },
-  checker = { enabled = true },
-})
-
-vim.cmd([[colorscheme flexoki]])
+vim.pack.add({
+  {src = "https://github.com/nvim-tree/nvim-tree.lua"},
+  {src = "https://github.com/folke/zen-mode.nvim"},
+  {src = "https://github.com/rose-pine/neovim"},
+  {src = "https://github.com/dhruvasagar/vim-table-mode"},
+});
 
 require('nvim-tree').setup({
   view = {
@@ -48,16 +23,6 @@ require('zen-mode').setup({
   }
 })
 
--- COLORS
--- vim.cmd([[highlight Normal guibg=#222222]])
--- vim.cmd([[highlight StatusLine guibg=#222222 guifg=#dddddd]])
-
-vim.o.termguicolors = true
-vim.opt.backup = false
-vim.opt.writebackup = false
-vim.opt.updatetime = 300
-vim.opt.signcolumn = 'yes'
-
 local ALL = 'a'
 local NORMAL = 'n'
 local INPUT = 'i'
@@ -67,21 +32,23 @@ local SPACE = '<space>'
 local CR = '<CR>'
 local TAB = '<TAB>'
 
-local THISFILE = '/Users/tafd/.config/nvim/init.lua'
+vim.g.mapleader = SPACE
+vim.g.maplocalleader = "\\"
 
-local o = vim.o
-local g = vim.g
+vim.o.number = true
+vim.o.wrap = false
+vim.o.termguicolors = true
+vim.o.backup = false
+vim.o.writebackup = false
+vim.o.updatetime = 300
+vim.o.signcolumn = 'yes'
+vim.o.expandtab = true
+vim.o.smartindent = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.cmd([[colorscheme rose-pine]])
 
-o.expandtab = true
-o.smartindent = true
-o.tabstop = 2
-o.shiftwidth = 2
-
-g.mapleader = SPACE
-
-function cmap(name, command)
-  vim.cmd('cnoreabbrev ' .. name .. ' ' .. command)
-end
+-- KEYMAPS
 
 function map(mode, lhs, rhs, opts)
   local options = { noremap = true }
@@ -91,51 +58,32 @@ function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-function nmap(key, command)
-  map(NORMAL, key, command, { silent = true })
-end
-
-function vmap(key, command)
-  map(VISUAL, key, command, { silent = true })
-end
-
-function spacemap(key, command)
-  nmap(SPACE .. key, command)
-end
-
-function vspacemap(key, command)
-  vmap(SPACE .. key, command)
-end
-
-function callmap(key, command)
+function cmap(key, command)
   vim.api.nvim_set_keymap(NORMAL, SPACE .. key, '', { callback = command, noremap = true })
 end
 
--- KEYMAPS
+map(NORMAL, SPACE .. 'k', '<C-a>')
+map(NORMAL, SPACE .. 'j', '<C-x>')
 
-spacemap('k', '<C-a>')
-spacemap('j', '<C-x>')
+map(NORMAL, SPACE .. 'ww', ':w' .. CR)
+map(NORMAL, SPACE .. 'wq', ':wq' .. CR)
 
-vspacemap('y', '"+y');
+map(NORMAL, SPACE .. 'tj', ':tabprev' .. CR)
+map(NORMAL, SPACE .. 'tk', ':tabnext' .. CR)
+map(NORMAL, SPACE .. 'tq', ':tabclose' .. CR)
 
-spacemap('ww', ':w' .. CR)
-spacemap('wq', ':wq' .. CR)
-spacemap('ss', ':source ' .. THISFILE .. CR)
+map(NORMAL, SPACE .. 'nf', ':NvimTreeFindFileToggle' .. CR)
 
-spacemap('tj', ':tabprev' .. CR)
-spacemap('tk', ':tabnext' .. CR)
-spacemap('tq', ':tabclose' .. CR)
+map(NORMAL, SPACE .. SPACE, ':')
+map(NORMAL, SPACE .. 'fs', '/')
 
-spacemap('nf', ':NvimTreeFindFileToggle' .. CR)
+map(NORMAL, SPACE .. 'cc', ':CocList commands' .. CR)
+map(NORMAL, SPACE .. 'cd', ':CocList diagnostics' .. CR)
+map(NORMAL, SPACE .. 'co', ':CocList outline' .. CR)
 
-spacemap(SPACE, ':')
-spacemap('fs', '/')
+map(VISUAL, SPACE .. 'y', '"+y');
 
-spacemap('cc', ':CocList commands' .. CR)
-spacemap('cd', ':CocList diagnostics' .. CR)
-spacemap('co', ':CocList outline' .. CR)
-
-callmap('zz', function()
+cmap('zz', function()
   require('zen-mode').toggle()
   end
 )
