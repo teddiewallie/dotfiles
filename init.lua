@@ -4,8 +4,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
   if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+    vim.api.nvim_echo({ { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
       { out, "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
@@ -22,7 +21,8 @@ require("lazy").setup({
   spec = {
     { "nvim-tree/nvim-tree.lua" },
     { "folke/zen-mode.nvim" },
-    { 'kepano/flexoki-neovim', name = 'flexoki' }
+    { "rose-pine/neovim", name = "rose-pine" },
+    { "dhruvasagar/vim-table-mode" },
   },
   -- install = { colorscheme = { "habamax" } },
   checker = { enabled = true },
@@ -95,8 +95,16 @@ function nmap(key, command)
   map(NORMAL, key, command, { silent = true })
 end
 
+function vmap(key, command)
+  map(VISUAL, key, command, { silent = true })
+end
+
 function spacemap(key, command)
   nmap(SPACE .. key, command)
+end
+
+function vspacemap(key, command)
+  vmap(SPACE .. key, command)
 end
 
 function callmap(key, command)
@@ -107,6 +115,8 @@ end
 
 spacemap('k', '<C-a>')
 spacemap('j', '<C-x>')
+
+vspacemap('y', '"+y');
 
 spacemap('ww', ':w' .. CR)
 spacemap('wq', ':wq' .. CR)
