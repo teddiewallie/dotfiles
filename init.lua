@@ -58,10 +58,6 @@ function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-function cmap(key, command)
-  vim.api.nvim_set_keymap(NORMAL, SPACE .. key, '', { callback = command, noremap = true })
-end
-
 map(NORMAL, SPACE .. 'k', '<C-a>')
 map(NORMAL, SPACE .. 'j', '<C-x>')
 
@@ -83,8 +79,5 @@ map(NORMAL, SPACE .. 'co', ':CocList outline' .. CR)
 
 map(VISUAL, SPACE .. 'y', '"+y');
 
-cmap('zz', function()
-  require('zen-mode').toggle()
-  end
-)
+map(NORMAL, SPACE .. 'zz', '', { callback = function() require('zen-mode').toggle() end })
 
