@@ -46,6 +46,16 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
+
+vim.cmd([[
+augroup TransparentBackground
+autocmd!
+autocmd ColorScheme * highlight Normal ctermbg=none guibg=none
+autocmd ColorScheme * highlight NonText ctermbg=none guibg=none
+autocmd ColorScheme * highlight StatusLine ctermbg=none guibg=none
+augroup END
+]])
+
 vim.cmd([[colorscheme rose-pine]])
 
 -- KEYMAPS
