@@ -51,8 +51,16 @@ vim.cmd([[
 augroup TransparentBackground
 autocmd!
 autocmd ColorScheme * highlight Normal ctermbg=none guibg=none
+autocmd ColorScheme * highlight NormalNC ctermbg=none guibg=none
+autocmd ColorScheme * highlight NormalSB ctermbg=none guibg=none
 autocmd ColorScheme * highlight NonText ctermbg=none guibg=none
 autocmd ColorScheme * highlight StatusLine ctermbg=none guibg=none
+autocmd ColorScheme * highlight StatusLineNC ctermbg=none guibg=none
+autocmd ColorScheme * highlight StatusLineSB ctermbg=none guibg=none
+autocmd ColorScheme * highlight TabLine ctermbg=none guibg=none
+autocmd ColorScheme * highlight TabLineSel ctermbg=none guibg=none
+autocmd ColorScheme * highlight TabLineFill ctermbg=none guibg=none
+autocmd ColorScheme * highlight ZenBg ctermbg=none guibg=none
 augroup END
 ]])
 
