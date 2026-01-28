@@ -1,0 +1,209 @@
+input {
+    keyboard {
+        xkb {
+          layout "se_prog"
+          options "caps:super"
+        }
+    }
+
+    touchpad {
+        off
+        // tap
+        // dwt
+        // dwtp
+        // drag false
+        // drag-lock
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        scroll-method "two-finger"
+        // disabled-on-external-mouse
+    }
+
+    mouse { 
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "no-scroll"
+    }
+
+    trackpoint { 
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "on-button-down"
+        // scroll-button 273
+        // scroll-button-lock
+        middle-emulation
+    }
+}
+
+/-output "eDP-1" {
+    mode "1920x1080@120.030"
+    scale 0.8
+    transform "normal"
+    position x=1280 y=0
+}
+
+gestures {
+  hot-corners {
+    off
+  }
+}
+
+layout {
+    // empty-workspace-above-first
+    gaps 0
+
+    background-color "00000020"
+
+    center-focused-column "never"
+    // always-center-single-column
+
+    preset-column-widths {
+        proportion 0.5
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        // Uncomment this line to disable the focus ring.
+        off
+
+        width 1
+
+        // active-color "#7fc8ff"
+        // inactive-color "#505050"
+
+        active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+
+    border {
+        off
+
+        width 4
+        active-color "#ffc87f"
+        inactive-color "#505050"
+
+        urgent-color "#9b0000"
+
+        active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+
+    // You can enable drop shadows for windows.
+    shadow {
+        // on
+
+        // draw-behind-window true
+
+        // softness 20
+        // spread 10
+        // offset x=0 y=0
+
+        // // You can also change the shadow color and opacity.
+        // color "#0007"
+    }
+
+    struts {
+        // left 64
+        // right 64
+        // top 64
+        // bottom 64
+    }
+}
+
+overview {
+  backdrop-color "00000020"
+}
+
+spawn-sh-at-startup "swaybg -m fill -i \"/home/tewa/Pictures/interstella/$((RANDOM % 15 + 1)).jpg\""
+// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    off
+    slowdown 1
+}
+
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}
+
+window-rule {
+  open-maximized true
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"firefox$"#
+    opacity 0.95
+}
+
+binds {
+    F1 repeat=false { close-window; }
+    F3 { spawn "ghostty"; }
+    F4 { spawn-sh "pkill rofi || rofi -show drun"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ +2%"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ -2%"; }
+    XF86AudioMute allow-when-locked=true { spawn-sh "pactl set-sink-mute @DEFAULT_SINK@ toggle"; }
+    XF86AudioMicMute allow-when-locked=true { spawn-sh "pactl set-source-mute @DEFAULT_SOURCE@ toggle"; }
+
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
+    Mod+O           { toggle-window-rule-opacity; }
+    Mod+W           { spawn-sh "swaybg -m fill -i \"/home/tewa/Pictures/interstella/$((RANDOM % 15 + 1)).jpg\""; }
+    Mod+Space       { toggle-overview; }
+
+    Mod+F           { maximize-column; }
+
+    Mod+H           { focus-column-left; }
+    Mod+J           { focus-window-or-workspace-down; }
+    Mod+K           { focus-window-or-workspace-up; }
+    Mod+L           { focus-column-right; }
+
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+L     { move-column-right; }
+
+    Mod+Shift+J     { move-window-down-or-to-workspace-down; }
+    Mod+Shift+K     { move-window-up-or-to-workspace-up; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    Mod+Tab { focus-workspace-previous; }
+}
