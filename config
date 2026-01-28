@@ -1,7 +1,7 @@
 ## FONT ##
 
 font-family                = MonaspiceAr Nerd Font
-font-size                  = 14
+font-size                  = 8
 adjust-cell-width          = 3
 adjust-cell-height         = 4
 bold-is-bright             = true
@@ -13,6 +13,7 @@ gtk-titlebar               = false
 window-padding-x           = 20
 window-padding-y           = 20
 confirm-close-surface      = false
+app-notifications          = no-clipboard-copy
 
 ## SHELL ##
 
@@ -23,12 +24,11 @@ cursor-style-blink         = false
 
 ## THEME ##
 
-theme                      = rose-pine
-palette                    = 2=#31748f
-palette                    = 10=#31748f
-palette                    = 4=#9ccfd8
-palette                    = 12=#9ccfd8
-selection-background       = #403d52
+theme                      = 3024 Night
+foreground                 = #ffffff
+background                 = #000000
+background-opacity         = 0.6
+background-blur            = false
 
 ## SHADER ##
 
