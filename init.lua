@@ -62,9 +62,9 @@ autocmd ColorScheme * highlight TabLineSel ctermbg=none guibg=none
 autocmd ColorScheme * highlight TabLineFill ctermbg=none guibg=none
 autocmd ColorScheme * highlight ZenBg ctermbg=none guibg=none
 augroup END
-]])
 
-vim.cmd([[colorscheme rose-pine]])
+colorscheme rose-pine
+]])
 
 -- KEYMAPS
 
