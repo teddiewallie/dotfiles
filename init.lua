@@ -16,11 +16,32 @@ require('nvim-tree').setup({
 })
 
 require('zen-mode').setup({
+  on_open = function()
+    local buf = vim.api.nvim_get_current_buf()
+    local path = vim.api.nvim_buf_get_name(buf)
+
+    -- Only map 'q' if the file path contains "notes"
+    if path:match("notes") then
+      vim.api.nvim_buf_set_keymap(buf, "n", "q",
+        [[:lua if #vim.fn.getbufinfo({buflisted=1}) == 1 then vim.cmd('confirm qa') else vim.cmd('confirm bd') end<CR>]],
+        { noremap = true, silent = true }
+      )
+    end
+
+    -- Remap :q in this window to close the buffer
+    vim.api.nvim_buf_set_keymap(0, "n", ":q",
+      [[:lua if #vim.fn.getbufinfo({buflisted=1}) == 1 then vim.cmd('qa') else vim.cmd('bd') end<CR>]],
+      { noremap = true, silent = true }
+    )
+  end,
   window = {
     backdrop = 1,
-    width = 120,
-    height = 0.9
-  }
+    width = 80,
+    height = 0.9,
+    options = {
+      number = false,
+    },
+  },
 })
 
 local ALL = 'a'
@@ -36,7 +57,8 @@ vim.g.mapleader = SPACE
 vim.g.maplocalleader = "\\"
 
 vim.o.number = true
-vim.o.wrap = false
+vim.o.wrap = true
+vim.o.linebreak = true
 vim.o.termguicolors = true
 vim.o.backup = false
 vim.o.writebackup = false
@@ -80,7 +102,6 @@ map(NORMAL, SPACE .. 'k', '<C-a>')
 map(NORMAL, SPACE .. 'j', '<C-x>')
 
 map(NORMAL, SPACE .. 'ww', ':w' .. CR)
-map(NORMAL, SPACE .. 'wq', ':wq' .. CR)
 
 map(NORMAL, SPACE .. 'tj', ':tabprev' .. CR)
 map(NORMAL, SPACE .. 'tk', ':tabnext' .. CR)
@@ -90,10 +111,6 @@ map(NORMAL, SPACE .. 'nf', ':NvimTreeFindFileToggle' .. CR)
 
 map(NORMAL, SPACE .. SPACE, ':')
 map(NORMAL, SPACE .. 'fs', '/')
-
-map(NORMAL, SPACE .. 'cc', ':CocList commands' .. CR)
-map(NORMAL, SPACE .. 'cd', ':CocList diagnostics' .. CR)
-map(NORMAL, SPACE .. 'co', ':CocList outline' .. CR)
 
 map(VISUAL, SPACE .. 'y', '"+y');
 
