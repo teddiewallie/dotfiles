@@ -1,47 +1,44 @@
 vim.pack.add({
-  {src = "https://github.com/nvim-tree/nvim-tree.lua"},
-  {src = "https://github.com/folke/zen-mode.nvim"},
-  {src = "https://github.com/rose-pine/neovim"},
-  {src = "https://github.com/dhruvasagar/vim-table-mode"},
+    {src = "https://github.com/nvim-tree/nvim-tree.lua"},
+    {src = "https://github.com/folke/zen-mode.nvim"},
+    {src = "https://github.com/rose-pine/neovim"},
+    {src = "https://github.com/dhruvasagar/vim-table-mode"},
 });
 
 require('nvim-tree').setup({
-  view = {
-    adaptive_size = true
-  },
-  update_focused_file = {
-    enable = true,
-    update_root = true
-  }
+    view = {
+        adaptive_size = true
+    },
+    update_focused_file = {
+        enable = true,
+        update_root = true
+    }
 })
 
 require('zen-mode').setup({
-  on_open = function()
-    local buf = vim.api.nvim_get_current_buf()
-    local path = vim.api.nvim_buf_get_name(buf)
-
-    -- Only map 'q' if the file path contains "notes"
-    if path:match("notes") then
-      vim.api.nvim_buf_set_keymap(buf, "n", "q",
-        [[:lua if #vim.fn.getbufinfo({buflisted=1}) == 1 then vim.cmd('confirm qa') else vim.cmd('confirm bd') end<CR>]],
-        { noremap = true, silent = true }
-      )
-    end
-
-    -- Remap :q in this window to close the buffer
-    vim.api.nvim_buf_set_keymap(0, "n", ":q",
-      [[:lua if #vim.fn.getbufinfo({buflisted=1}) == 1 then vim.cmd('qa') else vim.cmd('bd') end<CR>]],
-      { noremap = true, silent = true }
-    )
-  end,
-  window = {
-    backdrop = 1,
-    width = 80,
-    height = 0.9,
-    options = {
-      number = false,
-    },
-  },
+    on_open = function()
+        local buf = vim.api.nvim_get_current_buf()
+        local path = vim.api.nvim_buf_get_name(buf)
+    
+        -- Only map 'q' if the file path contains "notes"
+        if path:match("notes") then
+            vim.api.nvim_buf_set_keymap(buf, "n", "q",
+                [[:lua if #vim.fn.getbufinfo({buflisted=1}) == 1 then vim.cmd('confirm qa') else vim.cmd('confirm bd') end<CR>]],
+                { noremap = true, silent = true }
+            )
+        end
+    
+        -- Remap :q in this window to close the buffer
+        vim.api.nvim_buf_set_keymap(0, "n", ":q",
+            [[:lua if #vim.fn.getbufinfo({buflisted=1}) == 1 then vim.cmd('qa') else vim.cmd('bd') end<CR>]],
+            { noremap = true, silent = true }
+        )
+    end,
+    window = {
+        backdrop = 1,
+        width = 120,
+        height = 0.9
+    }
 })
 
 local ALL = 'a'
@@ -66,8 +63,8 @@ vim.o.updatetime = 300
 vim.o.signcolumn = 'yes'
 vim.o.expandtab = true
 vim.o.smartindent = true
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 
 vim.cmd([[
 augroup TransparentBackground
@@ -91,11 +88,11 @@ colorscheme rose-pine
 -- KEYMAPS
 
 function map(mode, lhs, rhs, opts)
-  local options = { noremap = true }
-  if opts then
-    options = vim.tbl_extend('force', options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend('force', options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 map(NORMAL, SPACE .. 'k', '<C-a>')
