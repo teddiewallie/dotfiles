@@ -6,21 +6,17 @@ padding.y = 16
 
 [font]
 
-size = 14
+size = 12
 offset.x = 2
 offset.y = 2
 
-normal.family = "Consolas"
-normal.style = "Regular"
+normal.family = "Cartograph CF"
 
-bold.family = "Consolas"
-bold.style = "Bold"
+bold.family = "Cartograph CF"
 
-italic.family = "Consolas"
-italic.style = "Italic"
+italic.family = "Cartograph CF"
 
-bold_italic.family = "Consolas"
-bold_italic.style = "Bold Italic"
+bold_italic.family = "Cartograph CF"
 
 [cursor]
 
