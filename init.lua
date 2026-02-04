@@ -97,19 +97,13 @@ end
 
 map(NORMAL, SPACE .. 'k', '<C-a>')
 map(NORMAL, SPACE .. 'j', '<C-x>')
-
 map(NORMAL, SPACE .. 'ww', ':w' .. CR)
-
 map(NORMAL, SPACE .. 'tj', ':tabprev' .. CR)
 map(NORMAL, SPACE .. 'tk', ':tabnext' .. CR)
 map(NORMAL, SPACE .. 'tq', ':tabclose' .. CR)
-
 map(NORMAL, SPACE .. 'nf', ':NvimTreeFindFileToggle' .. CR)
-
 map(NORMAL, SPACE .. SPACE, ':')
 map(NORMAL, SPACE .. 'fs', '/')
-
 map(VISUAL, SPACE .. 'y', '"+y');
-
 map(NORMAL, SPACE .. 'zz', '', { callback = function() require('zen-mode').toggle() end })
 
