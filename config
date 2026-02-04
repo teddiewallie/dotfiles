@@ -1,9 +1,10 @@
 ## FONT ##
 
-font-family                = MonaspiceAr Nerd Font
-font-size                  = 8
+font-family                = Cartograph CF
+font-size                  = 10
 adjust-cell-width          = 3
 adjust-cell-height         = 4
+font-feature               = -calt, -liga, -dlig
 bold-is-bright             = true
 
 ## WINDOW ##
@@ -25,7 +26,7 @@ cursor-style-blink         = false
 ## THEME ##
 
 theme                      = 3024 Night
-foreground                 = #ffffff
+foreground                 = #cccccc
 background                 = #000000
 background-opacity         = 0.6
 background-blur            = false
