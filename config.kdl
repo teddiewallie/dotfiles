@@ -40,11 +40,11 @@ input {
     }
 }
 
-/-output "eDP-1" {
-    mode "1920x1080@120.030"
-    scale 0.8
+output "DP-1" {
+    mode "2560x1440@59.951"
+    scale 1
     transform "normal"
-    position x=1280 y=0
+    position x=0 y=0
 }
 
 gestures {
@@ -129,7 +129,7 @@ hotkey-overlay {
 
 prefer-no-csd
 
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/screenshots/%Y%m%dT%H%M%S.png"
 
 animations {
     off
@@ -170,6 +170,7 @@ binds {
 
     Mod+O           { toggle-window-rule-opacity; }
     Mod+W           { spawn-sh "swaybg -m fill -i \"/home/tewa/Pictures/interstella/$((RANDOM % 15 + 1)).jpg\""; }
+    Mod+S           { spawn-sh "screensleep"; }
     Mod+Space       { toggle-overview; }
 
     Mod+F           { maximize-column; }
@@ -178,6 +179,12 @@ binds {
     Mod+J           { focus-window-or-workspace-down; }
     Mod+K           { focus-window-or-workspace-up; }
     Mod+L           { focus-column-right; }
+
+    Mod+Left        { focus-column-left; }
+    Mod+Down        { focus-window-or-workspace-down; }
+    Mod+Up          { focus-window-or-workspace-up; }
+    Mod+Right       { focus-column-right; }
+
 
     Mod+Shift+H     { move-column-left; }
     Mod+Shift+L     { move-column-right; }
@@ -206,4 +213,7 @@ binds {
     Mod+Shift+9 { move-column-to-workspace 9; }
 
     Mod+Tab { focus-workspace-previous; }
+
+    Mod+Print { screenshot show-pointer=false; }
+    Print { screenshot-screen show-pointer=false; }
 }
