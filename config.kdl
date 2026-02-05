@@ -142,7 +142,7 @@ layer-rule {
 }
 
 window-rule {
-  open-maximized true
+    open-maximized true
 }
 
 window-rule {
