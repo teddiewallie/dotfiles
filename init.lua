@@ -23,7 +23,7 @@ require('zen-mode').setup({
         -- Only map 'q' if the file path contains "notes"
         if path:match("notes") then
             vim.api.nvim_buf_set_keymap(buf, "n", "q",
-                [[:lua if #vim.fn.getbufinfo({buflisted=1}) == 1 then vim.cmd('confirm qa') else vim.cmd('confirm bd') end<CR>]],
+                [[:lua if #vim.fn.getbufinfo({buflisted=1}) == 1 then vim.cmd('confirm wqa') else vim.cmd('confirm bd') end<CR>]],
                 { noremap = true, silent = true }
             )
         end
@@ -39,6 +39,12 @@ require('zen-mode').setup({
         width = 80,
         height = 0.9
     }
+})
+
+vim.filetype.add({
+  extension = {
+    mdx = "markdown",
+  },
 })
 
 local ALL = 'a'

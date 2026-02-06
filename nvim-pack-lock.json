@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "mdx.nvim": {
+      "rev": "30222997ed4c0c7cc7447c4fce360fce87101bbf",
+      "src": "https://github.com/davidmh/mdx.nvim"
+    },
     "neovim": {
       "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
       "src": "https://github.com/rose-pine/neovim"
