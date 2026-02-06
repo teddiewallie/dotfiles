@@ -1,9 +1,15 @@
 vim.pack.add({
-    {src = "https://github.com/nvim-tree/nvim-tree.lua"},
-    {src = "https://github.com/folke/zen-mode.nvim"},
-    {src = "https://github.com/rose-pine/neovim"},
-    {src = "https://github.com/dhruvasagar/vim-table-mode"},
+    {src = 'https://github.com/nvim-tree/nvim-tree.lua'},
+    {src = 'https://github.com/folke/zen-mode.nvim'},
+    {src = 'https://github.com/rose-pine/neovim'},
+    {src = 'https://github.com/dhruvasagar/vim-table-mode'},
+    {src = 'https://github.com/dhruvasagar/vim-table-mode'},
+    {src = 'https://github.com/nvim-treesitter/nvim-treesitter'},
+    {src = 'https://github.com/nvim-mini/mini.icons'},
+    {src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim'},
 });
+
+require('render-markdown').setup({})
 
 require('nvim-tree').setup({
     view = {
@@ -16,24 +22,6 @@ require('nvim-tree').setup({
 })
 
 require('zen-mode').setup({
-    on_open = function()
-        local buf = vim.api.nvim_get_current_buf()
-        local path = vim.api.nvim_buf_get_name(buf)
-    
-        -- Only map 'q' if the file path contains "notes"
-        if path:match("notes") then
-            vim.api.nvim_buf_set_keymap(buf, "n", "q",
-                [[:lua if #vim.fn.getbufinfo({buflisted=1}) == 1 then vim.cmd('confirm wqa') else vim.cmd('confirm bd') end<CR>]],
-                { noremap = true, silent = true }
-            )
-        end
-    
-        -- Remap :q in this window to close the buffer
-        vim.api.nvim_buf_set_keymap(0, "n", ":q",
-            [[:lua if #vim.fn.getbufinfo({buflisted=1}) == 1 then vim.cmd('qa') else vim.cmd('bd') end<CR>]],
-            { noremap = true, silent = true }
-        )
-    end,
     window = {
         backdrop = 1,
         width = 80,
@@ -58,7 +46,10 @@ local TAB = '<TAB>'
 
 vim.g.mapleader = SPACE
 vim.g.maplocalleader = "\\"
+vim.g.markdown_folding = 1
 
+vim.o.foldlevelstart = 1
+vim.o.foldlevel = 1
 vim.o.wrap = true
 vim.o.linebreak = true
 vim.o.termguicolors = true
@@ -100,6 +91,8 @@ function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+map(NORMAL, CR, 'za')
+map(NORMAL, SPACE .. CR, 'zx')
 map(NORMAL, SPACE .. 'k', '<C-a>')
 map(NORMAL, SPACE .. 'j', '<C-x>')
 map(NORMAL, SPACE .. 'ww', ':w' .. CR)

@@ -4,6 +4,10 @@
       "rev": "30222997ed4c0c7cc7447c4fce360fce87101bbf",
       "src": "https://github.com/davidmh/mdx.nvim"
     },
+    "mini.icons": {
+      "rev": "efc85e42262cd0c9e1fdbf806c25cb0be6de115c",
+      "src": "https://github.com/nvim-mini/mini.icons"
+    },
     "neovim": {
       "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
       "src": "https://github.com/rose-pine/neovim"
@@ -11,6 +15,14 @@
     "nvim-tree.lua": {
       "rev": "b93dbb9b58a882116b381dcc6ae33acafadfb8ee",
       "src": "https://github.com/nvim-tree/nvim-tree.lua"
+    },
+    "nvim-treesitter": {
+      "rev": "92c9b016d16473dabd2bf3760196cf2d928edacc",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "render-markdown.nvim": {
+      "rev": "48b4175dbca8439d30c1f52231cbe5a712c8f9d9",
+      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "vim-table-mode": {
       "rev": "bb025308a45c67c7c8f0763ba37bc2ee3f534df0",
