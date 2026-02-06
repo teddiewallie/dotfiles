@@ -36,7 +36,7 @@ require('zen-mode').setup({
     end,
     window = {
         backdrop = 1,
-        width = 120,
+        width = 80,
         height = 0.9
     }
 })
@@ -53,7 +53,6 @@ local TAB = '<TAB>'
 vim.g.mapleader = SPACE
 vim.g.maplocalleader = "\\"
 
-vim.o.number = true
 vim.o.wrap = true
 vim.o.linebreak = true
 vim.o.termguicolors = true
