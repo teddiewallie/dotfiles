@@ -3,13 +3,11 @@ vim.pack.add({
     {src = 'https://github.com/folke/zen-mode.nvim'},
     {src = 'https://github.com/rose-pine/neovim'},
     {src = 'https://github.com/dhruvasagar/vim-table-mode'},
-    {src = 'https://github.com/dhruvasagar/vim-table-mode'},
     {src = 'https://github.com/nvim-treesitter/nvim-treesitter'},
     {src = 'https://github.com/nvim-mini/mini.icons'},
     {src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim'},
 });
 
-require('render-markdown').setup({})
 
 require('nvim-tree').setup({
     view = {
@@ -46,10 +44,11 @@ local TAB = '<TAB>'
 
 vim.g.mapleader = SPACE
 vim.g.maplocalleader = "\\"
-vim.g.markdown_folding = 1
 
+vim.g.markdown_folding = 1
 vim.o.foldlevelstart = 1
 vim.o.foldlevel = 1
+
 vim.o.wrap = true
 vim.o.linebreak = true
 vim.o.termguicolors = true
@@ -61,6 +60,7 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
+vim.o.fillchars = "vert:|,horiz:━,eob: "
 
 vim.cmd([[
 augroup TransparentBackground
@@ -103,5 +103,18 @@ map(NORMAL, SPACE .. 'nf', ':NvimTreeFindFileToggle' .. CR)
 map(NORMAL, SPACE .. SPACE, ':')
 map(NORMAL, SPACE .. 'fs', '/')
 map(VISUAL, SPACE .. 'y', '"+y');
-map(NORMAL, SPACE .. 'zz', '', { callback = function() require('zen-mode').toggle() end })
+
+map(NORMAL, SPACE .. 'zz', '', { callback = function()
+    require('zen-mode').toggle()
+end })
+
+map(NORMAL, SPACE .. 'dd', '', { callback = function()
+    local fs = vim.fn.foldclosed(".")
+    if fs ~= -1 then
+        local fe = vim.fn.foldclosedend(".")
+        vim.cmd(fs .. "," .. fe .. "delete")
+    else
+        vim.cmd("normal! dd")
+    end
+end })
 
