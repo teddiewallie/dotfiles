@@ -27,6 +27,10 @@ require('zen-mode').setup({
     }
 })
 
+require('render-markdown').setup({
+    code = { border = 'thick' },
+})
+
 vim.filetype.add({
   extension = {
     mdx = "markdown",
