@@ -62,6 +62,13 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.fillchars = "vert:|,horiz:━,eob: "
 
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "calendar.md",
+  callback = function()
+    vim.opt_local.wrap = false
+  end,
+})
+
 vim.cmd([[
 augroup TransparentBackground
 autocmd!
