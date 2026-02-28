@@ -150,10 +150,10 @@ window-rule {
     open-floating true
 }
 
-window-rule {
-    match app-id=r#"firefox$"#
-    opacity 0.95
-}
+// window-rule {
+//     match app-id=r#"firefox$"#
+//     opacity 0.95
+// }
 
 binds {
     F1 repeat=false { close-window; }
@@ -171,6 +171,7 @@ binds {
     Mod+O           { toggle-window-rule-opacity; }
     Mod+W           { spawn-sh "swaybg -m fill -i \"/home/tewa/Pictures/interstella/$((RANDOM % 15 + 1)).jpg\""; }
     Mod+S           { spawn-sh "screensleep"; }
+    Mod+Shift+S     { spawn-sh "suspendkey"; }
     Mod+Space       { toggle-overview; }
 
     Mod+F           { maximize-column; }
@@ -218,4 +219,14 @@ binds {
 
     Mod+Print { screenshot show-pointer=false; }
     Print { screenshot-screen show-pointer=false; }
+
+    Mod+F11 { spawn "sh" "-c" r#"
+        file=/tmp/"screenrec-$(date +%s)".mp4
+        notify-send -t 2000 -a "Screen Recording" "Screenrecord starting..."
+        wf-recorder -g "$(slurp -b '#00000090')" -f "$file"
+        wl-copy file:/"$file" -t text/uri-list
+        "#;
+    }
+
+    Mod+F12 { spawn "sh" "-c" "killall -s SIGINT wf-recorder && notify-send -t 2000 -a Screen Recording 'Screenrecord stopped'"; }
 }
