@@ -40,20 +40,6 @@ input {
     }
 }
 
-output "DP-1" {
-    mode "2560x1440@59.951"
-    scale 1
-    transform "normal"
-    position x=0 y=0
-}
-
-output "HDMI-1" {
-    mode "2560x1440@59.951"
-    scale 1
-    transform "normal"
-    position x=0 y=0
-}
-
 gestures {
   hot-corners {
     off
@@ -127,7 +113,7 @@ overview {
   backdrop-color "00000020"
 }
 
-spawn-sh-at-startup "swaybg -m fill -i \"/home/tewa/Pictures/interstella/$((RANDOM % 15 + 1)).jpg\""
+// spawn-sh-at-startup "swaybg -m fill -i \"/home/tewa/Pictures/interstella/$((RANDOM % 15 + 1)).jpg\""
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
 hotkey-overlay {
@@ -176,7 +162,7 @@ binds {
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     Mod+O           { toggle-window-rule-opacity; }
-    Mod+W           { spawn-sh "swaybg -m fill -i \"/home/tewa/Pictures/interstella/$((RANDOM % 15 + 1)).jpg\""; }
+//    Mod+W           { spawn-sh "swaybg -m fill -i \"/home/tewa/Pictures/interstella/$((RANDOM % 15 + 1)).jpg\""; }
     Mod+S           { spawn-sh "screensleep"; }
     Mod+Shift+S     { spawn-sh "suspendkey"; }
     Mod+Space       { toggle-overview; }
