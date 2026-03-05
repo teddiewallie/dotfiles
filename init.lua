@@ -6,6 +6,7 @@ vim.pack.add({
     {src = 'https://github.com/nvim-treesitter/nvim-treesitter'},
     {src = 'https://github.com/nvim-mini/mini.icons'},
     {src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim'},
+    {src = 'https://github.com/aklt/plantuml-syntax'}
 });
 
 
@@ -28,6 +29,34 @@ require('zen-mode').setup({
 })
 
 require('render-markdown').setup({
+    callout = {
+        note            = { rendered = '󰙎 Note      ', },
+        tip             = { rendered = '󰬁 Tip       ', },
+        important       = { rendered = ' Important ', },
+        warning         = { rendered = ' Warning   ', },
+        caution         = { rendered = ' Caution   ', },
+    },
+    heading = {
+        icons = {' ', ' ', ' ', ' ', ' ', ' '},
+    },
+    checkbox = {
+        enabled = true,
+        render_modes = false,
+        bullet = false,
+        left_pad = 3,
+        right_pad = 1,
+        unchecked = {
+            icon = ' ',
+            highlight = 'RenderMarkdownUnchecked',
+            scope_highlight = nil,
+        },
+        checked = {
+            icon = ' ',
+            highlight = 'RenderMarkdownChecked',
+            scope_highlight = nil,
+        },
+        scope_priority = nil,
+    },
     code = { border = 'thick' },
 })
 

@@ -20,6 +20,10 @@
       "rev": "92c9b016d16473dabd2bf3760196cf2d928edacc",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
+    "plantuml-syntax": {
+      "rev": "9d4900aa16674bf5bb8296a72b975317d573b547",
+      "src": "https://github.com/aklt/plantuml-syntax"
+    },
     "render-markdown.nvim": {
       "rev": "48b4175dbca8439d30c1f52231cbe5a712c8f9d9",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
