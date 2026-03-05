@@ -1,5 +1,6 @@
 ## FONT ##
 
+<<<<<<< HEAD
 font-family                = Cartograph CF
 font-size                  = 10
 adjust-cell-width          = 3
@@ -28,7 +29,7 @@ cursor-style-blink         = false
 theme                      = 3024 Night
 foreground                 = #cccccc
 background                 = #000000
-background-opacity         = 0.6
+background-opacity         = 0.7
 background-blur            = false
 
 ## SHADER ##
